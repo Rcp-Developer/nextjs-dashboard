@@ -42,8 +42,11 @@ export default function Page() {
     fireConfetti();
   });
 
+  const estilo = {
+    height: "500px"
+  };
   return (
-    <main className={loveLight.className}>
+    <main className={loveLight.className} style={estilo}>
       <div className={styles.container}>
         <div className={styles.heartsBackground}></div>
         <motion.h1
@@ -58,7 +61,7 @@ export default function Page() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 1, duration: 2 }}
-          className={`${styles.message} ${loveLight.className}`}
+          className={`${styles.message} ${loveLight.className} antialised`}
         >
           Eu sou muito privilegiado por ter você ao meu lado. Te amo muito minha Paraibana linda e goxtosaaa! 🌵😍👩‍❤️‍👨
         </motion.p>
