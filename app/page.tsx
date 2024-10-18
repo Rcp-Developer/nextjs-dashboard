@@ -45,6 +45,9 @@ export default function Page() {
   const estilo = {
     height: "500px"
   };
+  const estilo2 = {
+    marginBottom: "50px"
+  };
   return (
     <main className={loveLight.className} style={estilo}>
       <div className={styles.container}>
@@ -69,7 +72,7 @@ export default function Page() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 1, duration: 2.5 }}
-          className={`${styles.submessage} ${loveLight.className}`}>
+          className={`${styles.submessage} ${loveLight.className} ${estilo2}`}>
           Do seu eterno admirador e namorado apaixonado, <b className={roboto.className}>Rodrigo Coladello Pereira ❤️👨‍💻</b>
         </motion.p>
       </div>
