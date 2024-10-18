@@ -73,7 +73,7 @@ export default function Page() {
           animate={{ opacity: 1 }}
           transition={{ delay: 1, duration: 2.5 }}
           className={`${styles.submessage} ${loveLight.className} ${estilo2}`}>
-          Do seu eterno admirador e namorado apaixonado, <b className={roboto.className}>Rodrigo Coladello Pereira ❤️👨‍💻</b>
+          Do seu eterno admirador e namorado apaixonado, Rodrigo Coladello Pereira ❤️👨‍💻
         </motion.p>
       </div>
     </main>
