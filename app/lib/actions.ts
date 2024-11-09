@@ -17,7 +17,7 @@ const CreateInvoice = FormSchema.omit({ id: true, date: true });
 
 export async function createInvoice(formData: FormData) {
 
-    const { customerId, amount, status} = CreateInvoice.parse({
+    const { customerId, amount, status } = CreateInvoice.parse({
         customerId: formData.get("customerId"),
         amount: formData.get("amount"),
         status: formData.get("status")
@@ -34,9 +34,29 @@ export async function createInvoice(formData: FormData) {
     //console.log(typeof rawFormData.amount);
 
     await sql`
-    INSERT INTO INVOICES (CUSTOMER_ID, AMOUNT, STATUS, DATE)
-    VALUES (${customerId}, ${amountInCents}, ${status}, ${date})
-    `;
+        INSERT INTO INVOICES (CUSTOMER_ID, AMOUNT, STATUS, DATE)
+        VALUES (${customerId}, ${amountInCents}, ${status}, ${date})
+        `;
+
+    revalidatePath("/dashboard/invoices");
+    redirect("/dashboard/invoices");
+}
+
+const UpdateInvoice = FormSchema.omit({ id: true, date: true });
+
+export async function updateInvoice(id: string, formData: FormData){
+
+    const { customerId, amount, status } = UpdateInvoice.parse({
+        customerId: formData.get("customerId"),
+        amount: formData.get("amount"),
+        status: formData.get("status")
+    });
+
+    const amountInCents = amount * 100;
+
+    await sql`
+    UPDATE INVOICES SET CUSTOMER_ID = ${customerId}, AMOUNT = ${amountInCents}, STATUS = ${status}
+    WHERE ID = ${id}`;
 
     revalidatePath("/dashboard/invoices");
     redirect("/dashboard/invoices");
